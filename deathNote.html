@@ -1,0 +1,19 @@
+
+<p class="stem">Lil Uzi</p>
+<p class="stem">Lil Pump</p>
+<p class="stem">XXXtentacion</p>
+<p class="stem">Ski Mask</p>
+//created 4 items in a class called "stem"//
+<button onclick="deathNote()">
+Kill A Rapper
+</button>
+//created a button that calls upon the JS function named "deathNote()" to kill a rapper//
+
+
+function deathNote(){
+var death =Math.floor(Math.random() * 4);
+//variable that randomizes a number from 1-4 //
+document.getElementsByClassName('stem')[death].innerHTML ="<img src='https://static.vibe.com/files/2016/03/GettyImages-186162800.jpg' width= '20%'>";
+// quarries an element from the class aka a rapper from the list randomly with its index value, and displaying a pic instead of 
+the rappers name meaning they're dead until all of the elements are chosen//
+}
