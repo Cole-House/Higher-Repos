@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <body>
+      <script>
+        function multiPly(){
+ var x = document.getElementById('xNumber').value;
+ var y = document.getElementById('yNumber').value;
+ //the multiPly() function starts and gets the two number elements from the user input, and replaces them with variables//
+ var calculation = x * y
+ //multiplies the variables together and that value becomes the calculation var//
+ document.getElementById('one').innerHTML =calculation;
+ //inputs the var calculation into the html P aspect "one", pops up answer//
+}
+      </script>
+<input type="number" id="xNumber">
+<input type="number" id="yNumber">
+//asks for two numbers from user to input//
+<button onclick= "multiPly()">
+multiply
+</button>
+//creates a button to activate the multiPly() function in JS//
+<p id="one">
+</p>
+//P aspect to pop up the answer to the function in an empty paragraph//
+    </body>
+  </head>
+</html>
