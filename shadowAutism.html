@@ -1,0 +1,37 @@
+<htmL>
+  <head>
+    <style>
+      #maxim{
+        float:right;
+        height: 600px;
+      }
+      #choice{
+        width:30%;
+        font-size:35px;
+        float:right;
+      }
+    </style>
+   </head>
+   <body>
+     <script>
+       function tigerIn(){
+         document.getElementById('down').style.boxShadow = "10px 8px 5px #d3d3d3";
+       }
+       function tigerOut(){
+         document.getElementById('down').style.boxShadow = "0px 0px 0px black";
+       }
+       function monkeyIn(){
+         document.getElementById('maxim').style.boxShadow = "-5px 8px 5px #d3d3d3";
+       }
+       function monkeyOut(){
+         document.getElementById('maxim').style.boxShadow = "0px 0px 0px black";
+       }
+     </script>
+     <img src="http://www.pbh2.com/wordpress/wp-content/uploads/2011/05/inbred-white-tiger-kenny-1.jpg" id="down" onmouseover="tigerIn()" width="30%" onmouseout="tigerOut()">
+     <div id="choice">
+       Choose Your Champion!
+     </div>
+      <img src="http://d3n1j8rr5smgk8.cloudfront.net/wp-content/uploads/Proboscis_species.jpg" id="maxim" onmouseover="monkeyIn()" width="30%" onmouseout="monkeyOut()">
+    
+  </body>
+</htmL>
