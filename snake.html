@@ -1,0 +1,107 @@
+<html>
+ <head>
+     <script src='snake.js'></script>
+     <script src='p5.js'></script>
+   </head>
+  <body>
+    <h1 id="yourScore"></h1>
+    <script>
+    var s;
+    var scl = 20;
+    
+      function setup(){
+        createCanvas(600,600);
+        s = new Snake();
+        background(0,0,0);
+        foodLocation();
+      }
+      
+      function draw(){
+        frameRate(10); //fps
+        background(0,0,0); // background color
+        s.show();// show snake
+        s.update();// update snake direction
+        fill(255,0,0); //This is for the food
+        rect(food.x, food.y, scl, scl); //This is the food shape
+        if (s.eat(food)) { // run eat function in the object constructor ie.(snake).
+          foodLocation(); //run function when eat function in object constructor is true.
+        }
+        
+        
+      }
+      
+      function foodLocation() {
+        var cols = floor(width / scl);
+        var rows = floor(height / scl);
+        food = createVector(floor(random(cols)), floor(random(rows)));// vector is diretion and its randomized
+        food.mult(scl); //food respawns?
+      }
+      
+      function keyPressed() {
+        if (keyCode === UP_ARROW) { // up arrow, y = negative to go up, opposite of math
+          s.dir(0,-1);
+        }
+        else if (keyCode === DOWN_ARROW) { //down arrow
+          s.dir(0,1);
+        }
+        else if (keyCode === RIGHT_ARROW) { // move right, x = same as math
+          s.dir(1,0);
+        }
+        else if (keyCode === LEFT_ARROW) { //move left
+          s.dir(-1,0);
+        }
+      }
+    </script>
+  </body>
+</html>
+
+function Snake(){
+  this.x = 0; //sets default x
+  this.y = 0; //sets default y
+  this.xspeed = 1; //sets initial direction when starting
+  this.yspeed = 0; //sets initial direction when starting
+  this.total = 0; //total of points
+  this.tail = [];
+  
+
+ 
+  }
+  this.dir = function(x,y) { //moves snake
+    this.xspeed = x;
+    this.yspeed = y;
+  }
+  
+  this.eat = function(pos){
+    var d = dist(this.x, this.y, pos.x, pos.y); //setting d to equal distance in pixels.
+    if (d < 1) {
+      this.total++;
+      document.getElementById('yourScore').innerHTML = this.total;
+      return true; // if its touching its true
+    }
+    else {
+      return false;
+    }
+  }
+  
+  this.update = function() {
+    for(var i = 0; i < this.tail.length -1; i++){ // setup, initilization, and
+      this.tail[i] = this.tail[i+1]; // adds one to array
+    }
+    if(this.total >= 1){
+      this.tail[this.total -1]= createVector(this.x,this.y); // makes new box and have it follow the rest
+    }
+    this.x = this.x + this.xspeed * scl; //moves snake by 20
+    this.y = this.y + this.yspeed * scl; //moves snake by 20
+    this.x = constrain(this.x,0,width - scl); // if the current x position is touching the width, then stop it
+    this.y = constrain(this.y,0,width - scl);
+    
+  }
+
+  
+  this.show = function() {
+    fill(255,255,255); //snake color
+    rect(this.x,this.y, scl, scl); // snake shape
+    for(var i = 0; i < this.tail.length -1; i++) {
+      rect(this.tail[i].x, this.tail[i].y, scl,scl); // show array
+    }
+  }
